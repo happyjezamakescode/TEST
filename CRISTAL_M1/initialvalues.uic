@@ -1,0 +1,44 @@
+!
+! Set Initial Values for the amplitud flatfielding 
+!
+ret
+  settargetrate 3000
+  !settargetrate 600
+  !settargetrate 50000
+  !settargetrate 90000
+  !settargetrate 20000
+
+clip
+    LoadLut  !Load the look up table for the time calibration delay
+
+    latt  amp_ff_att10_4dec.uic     !load flatfielded attenuations
+    labs  delay_ff_all_dec6_2013.uic   !load flatfielded times
+
+!    cdel 30.0  !set minimum delay
+!    cfixd 1    !switch off fixed delay
+
+    !coff       !switch off all channels
+    cron        !switch on all channels
+!   cclip 0.15  !set normal clipping, calibrated 7PhE    
+   cclip 0.22  !set normal clipping, calibrated 10PhE for L3 Scan and first monodata taking
+
+    chon 1 32   !switch on mpnitor output
+    chon 2 32   !switch on reference output
+
+    
+    ret
+sum
+    !load_thresholds Thresholds_nominal_FF.uic
+    SET_CRATE_T 0.6 
+    ret
+ast
+    edel 1 0 !set the external delay for the laser trigger to 0
+    disgate
+    OneDref 1 3.2
+    ALLDDel 0 !2.8  
+    tmax 1000
+    cmax 65000
+    ret
+to cal
+    outputname DEFAULT
+    ret

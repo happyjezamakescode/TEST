@@ -1,0 +1,34 @@
+!
+! Initialization file for ST on MAGIC X 
+!
+
+	HostName ! to write reports
+           pc1.magic.iac.es dummy 
+
+
+	HostNo  ! to write reports
+		7303 0  	! Sum-Trigger
+
+
+	PortNo 7403  ! to read CC commands / reports
+clip 
+    inicrate
+    cron
+    ret
+ast
+    edel 1 0 ! set the external delay for the laser trigger to 0
+    edel 2 0 ! initialize all extrenal delays to zero
+    edel 3 192 ! Set coarse external delay to M1 trigger out to prescaler
+    edel 4 0 !
+    edel 5 0 !
+    edel 6 1 ! Set fine external delay to M1 trigger out to prescaler
+    ret 
+tool 
+     map
+          table
+     	  ret
+     run initialvalues
+
+ready
+
+!lock

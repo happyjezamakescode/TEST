@@ -1,0 +1,45 @@
+!
+! Macro to test calibration 
+!
+
+ret 
+clip
+cclip 1.0   
+coff
+ret
+
+ast
+engate
+ret
+
+tool Temp 1 
+tool cal OUTPUTNAME Threshold_scan_clipping_1V.dat
+CHANNEL_LAYOUT 1 1 THRES
+ret ret clip coff
+ret tool cal
+CHANNEL_LAYOUT 1 2 THRES
+ret ret clip  coff
+ret tool cal
+CHANNEL_LAYOUT 1 3 THRES
+ret ret clip  coff
+ret tool cal
+CHANNEL_LAYOUT 1 4 THRES
+ret ret clip coff 
+ret tool cal
+CHANNEL_LAYOUT 1 5 THRES
+ret ret clip coff
+ret tool cal
+CHANNEL_LAYOUT 1 6 THRES
+ret ret clip coff
+ret tool cal
+CHANNEL_LAYOUT 1 7 THRES
+ret ret clip coff
+ret tool cal
+CHANNEL_LAYOUT 1 8 THRES
+ret ret clip coff
+ret tool cal
+CHANNEL_LAYOUT 1 9 THRES
+ret ret clip  coff 
+ret tool cal
+ret
+

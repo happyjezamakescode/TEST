@@ -1,0 +1,23 @@
+!
+! Initialization file for ST on MAGIC X 
+!
+
+	HostName ! to write reports
+!           pc1.magic.iac.es dummy 
+
+
+	HostNo  ! to write reports
+		0 0  	! Sum-Trigger
+
+
+	PortNo 7448  ! to read CC commands / reports
+clip 
+    inicrate
+    cron
+    ret
+
+
+!rates
+ready
+
+!lock

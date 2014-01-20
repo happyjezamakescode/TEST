@@ -1,0 +1,38 @@
+!
+! Set Initial Values for the amplitud flatfielding 
+!
+ret
+clip
+    LoadLut  !Load the look up table for the time calibration delay
+
+!    catt 12 !start calibration with attenuation 8
+    latt  amp_ff_all_2_dec_2013_att12.uic     !load flatfielded attenuations
+
+    labs  del_ff_all_2_dec_2013_ver3.uic   !load flatfielded times
+
+!    cdel 30.0  //set minimum delay
+!    cfixd 1    //switch off fixed delay
+
+    !coff       //switch off all channels
+    cron        // switch on all channels
+    cclip 0.15  //set normal clipping    
+
+    chon 1 32   //switch on mpnitor output
+    chon 2 32   //switch on reference output
+
+    
+    ret
+sum
+    SET_CRATE_T 0.3 
+    ret
+ast
+    engate
+    OneDref 1 4.9
+    ALLDDel 2.8  
+    tmax 1000
+    cmax 65000
+    ret
+to cal
+    outputname DEFAULT
+    ret
+ret

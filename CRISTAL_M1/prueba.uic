@@ -1,0 +1,9 @@
+!
+! prueba macros
+!
+ret
+clip 
+    inicrate
+    cron
+    ret
+

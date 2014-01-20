@@ -1,0 +1,9 @@
+!
+! Macro to test calibration 
+!
+!@initialvalues
+tool Temp 1 
+tool cal OUTPUTNAME pj_test1_after2.dat
+CHANNEL_LAYOUT 1 1 THRES
+ret ret clip con ALLTEMP coff discon
+

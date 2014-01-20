@@ -1,0 +1,28 @@
+!
+! Set Initial Values for the amplitud flatfielding 
+!
+ret
+clip
+    catt 12 !start calibration with attenuation 12
+    cclip 2.5
+    cdel 30.0  !set minimum delay for att flatfield
+    cfixd 1    !deactivate fixed delay for att flatfield
+    coff
+    chon 1 32  !switch on monitoring output for scope
+    chon 2 32  !switch on reference output
+    LoadLut
+    ret
+sum
+    SET_CRATE_T 0.4 
+    ret
+ast
+    engate
+    OneDref 1 3.5
+    ALLDDel 0
+    tmax 1000
+    cmax 65000
+    ret
+to cal
+    outputname DEFAULT
+    ret
+ret

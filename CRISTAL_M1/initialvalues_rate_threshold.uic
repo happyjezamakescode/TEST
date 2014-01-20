@@ -1,0 +1,30 @@
+!
+! Set Initial Values for the amplitud flatfielding 
+!
+ret
+clip
+!    catt 8 !start calibration with attenuation 8
+    LoadLut
+!    latt amp_ff_all_2_dec_2013_att12.uic !load flatfielded attenuations
+    cclip 0.15
+!    labs  !load flatfielded times
+!    cdel 2.0
+!    cfixd 0
+    cron
+!    chon 1 32
+!    chon 2 32
+    ret
+sum
+    SET_CRATE_T 0.1
+    ret
+ast
+    disgate
+    OneDref 1 3.5
+    ALLDDel 0
+    tmax 3000
+    cmax 65000
+    ret
+to cal
+    outputname DEFAULT
+    ret
+ret

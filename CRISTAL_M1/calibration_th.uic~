@@ -1,0 +1,109 @@
+!
+! Macro to test calibration 
+!
+@initialvalues
+tool Temp 1 
+tool cal OUTPUTNAME Amplitud_calibration_M2_laser.dat
+CHANNEL_LAYOUT 1 1 THRES
+ret ret clip con ALLTEMP coff discon
+ret tool cal
+CHANNEL_LAYOUT 1 2 THRES
+ret ret clip con ALLTEMP coff discon
+ret tool cal
+CHANNEL_LAYOUT 1 3 THRES
+ret ret clip con ALLTEMP coff discon
+ret tool cal
+CHANNEL_LAYOUT 1 4 THRES
+ret ret clip con ALLTEMP coff discon
+ret tool cal
+CHANNEL_LAYOUT 1 5 THRES
+ret ret clip con ALLTEMP coff discon
+ret tool cal
+CHANNEL_LAYOUT 1 6 THRES
+ret ret clip con ALLTEMP coff discon
+ret tool cal
+CHANNEL_LAYOUT 1 7 THRES
+ret ret clip con ALLTEMP coff discon
+ret ret clip con coff discon
+ret tool cal
+CHANNEL_LAYOUT 1 8 THRES
+ret ret clip con ALLTEMP coff discon
+ret tool cal
+CHANNEL_LAYOUT 1 9 THRES
+ret ret clip con ALLTEMP coff discon
+ret tool cal
+CHANNEL_LAYOUT 1 10 THRES
+ret ret clip con ALLTEMP coff discon
+ret tool cal
+CHANNEL_LAYOUT 1 11 THRES
+ret ret clip con ALLTEMP coff discon
+ret tool cal
+CHANNEL_LAYOUT 1 12 THRES
+ret ret clip con ALLTEMP coff discon
+ret tool cal
+CHANNEL_LAYOUT 1 13 THRES
+ret ret clip con ALLTEMP coff discon
+ret tool cal
+CHANNEL_LAYOUT 1 14 THRES
+ret ret clip con ALLTEMP coff discon
+ret tool cal
+CHANNEL_LAYOUT 1 15 THRES
+ret ret clip con ALLTEMP coff discon
+ret tool cal
+CHANNEL_LAYOUT 1 16 THRES
+ret ret clip con ALLTEMP coff discon
+ret tool cal
+CHANNEL_LAYOUT 1 17 THRES
+ret ret clip con ALLTEMP coff discon
+ret tool cal
+CHANNEL_LAYOUT 1 18 THRES
+ret ret clip con ALLTEMP coff discon
+ret tool cal
+CHANNEL_LAYOUT 1 19 THRES
+ret ret clip con ALLTEMP coff discon
+ret tool cal
+CHANNEL_LAYOUT 2 3 THRES
+ret ret clip con ALLTEMP coff discon
+ret tool cal
+CHANNEL_LAYOUT 2 6 THRES
+ret ret clip con ALLTEMP coff discon
+ret tool cal
+CHANNEL_LAYOUT 2 8 THRES
+ret ret clip con ALLTEMP coff discon
+ret tool cal
+CHANNEL_LAYOUT 2 9 THRES
+ret ret clip con ALLTEMP coff discon
+ret tool cal
+CHANNEL_LAYOUT 2 10 THRES
+ret ret clip con ALLTEMP coff discon
+ret tool cal
+CHANNEL_LAYOUT 2 15 THRES
+ret ret clip con ALLTEMP coff discon
+ret tool cal
+CHANNEL_LAYOUT 2 19 THRES
+ret ret clip con ALLTEMP coff discon
+ret tool cal
+CHANNEL_LAYOUT 3 10 THRES
+ret ret clip con ALLTEMP coff discon
+ret tool cal
+CHANNEL_LAYOUT 3 1 THRES
+ret ret clip con ALLTEMP coff discon
+ret tool cal
+CHANNEL_LAYOUT 3 5 THRES
+ret ret clip con ALLTEMP coff discon
+ret tool cal
+CHANNEL_LAYOUT 3 11 THRES
+ret ret clip con ALLTEMP coff discon
+ret tool cal
+CHANNEL_LAYOUT 3 12 THRES
+ret ret clip con ALLTEMP coff discon
+ret tool cal
+CHANNEL_LAYOUT 3 14 THRES
+ret ret clip con ALLTEMP coff discon
+ret tool cal
+CHANNEL_LAYOUT 3 17 THRES
+ret ret clip con ALLTEMP coff discon
+ret tool cal
+
+   
+

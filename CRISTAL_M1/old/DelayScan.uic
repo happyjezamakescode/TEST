@@ -1,0 +1,8 @@
+!
+! Attenuation Scan macro
+!
+@initialvalues
+!chanel 1 Layer 1 
+tool 
+    cal
+        at

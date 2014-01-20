@@ -1,0 +1,19 @@
+!
+! Set Initial Values for the amplitud flatfielding 
+!
+ret
+clip
+    catt 8
+    cclip 2.5
+    cdel 30
+    cfixd 1
+    cron
+    ret
+sum
+   SET_CRATE_T 0.4 
+    ret
+ast
+    tmax 4000
+    cmax 65000
+    ret
+

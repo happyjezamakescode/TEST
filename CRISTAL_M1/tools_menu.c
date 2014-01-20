@@ -1,0 +1,58 @@
+/*******************************************************************
+ * Tools menu
+ * date: october 2013
+ * by: jrg
+ *
+ ********************************************************************/
+#include "CristalSpi.h"
+void tools_menu()
+{
+    short board;	
+    short address;	
+	float tvalue = 0;
+	float DesiredTiming = 0;//should be global?
+	char *verb;
+	char tablepath[100], macroname[50];
+	int4 iverb,eDelay,rate, patchnumber, ecount ;
+
+
+	while(True)
+	{
+		verb = action_menu( "TOOLS_MENU", &iverb);
+        if(strcmp(verb,"TEMP")==0) 
+        {
+         
+         get_integer("Enable (1) or disable(0)Temperature Control) ",(int4*)&CalSet.TempFlag,0,0);
+	// get_integer("Set the duration of the test",(int4*)&STInfo.total_time,0,3600000);
+         // get_integer("Set the interval between measures",(int4*)&STInfo.time_interval,1,36000);
+         // get_integer("Enable (1) or disable(0)Temperature Control) ",(int4*)&STInfo.temp_control,0,0);
+         // if(STInfo.temp_control==1)
+         //   printf("Monitoring the temperature of the crate\n");
+        }
+        if(strcmp(verb,"MAP")==0) mapping_menu();
+   
+        if(strcmp(verb,"CALIB")==0) calib_menu();
+   
+        if(strcmp(verb,"SPITEST")==0) SPI_test_menu();
+    
+        if(strcmp(verb,"DBG")==0) 
+        {
+         get_integer("Enable (1) or disable (0) DBG prints) ",&STInfo.DBG,0,0);
+         
+        }
+        if(strcmp(verb,"RUNMACRO")==0) 
+        {                                                
+			get_text("Enter macro name",(char*)macroname);
+            char str[1024]; 
+            str[0]='\0';
+            strcat((char *)str,"@");   //setdt
+            strcat((char *)str,macroname); 
+            printf("executing : \n %s \n", str);
+            AllowInput=1;
+            simulate_input((char *)str);
+		}
+     
+		if(strcmp(verb,"RETURN")==0)
+			return;
+	}
+}

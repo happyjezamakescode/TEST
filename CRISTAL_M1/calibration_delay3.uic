@@ -1,0 +1,42 @@
+!
+! Macro to test calibration 
+!
+@initialvalues_Del_FF
+tool cal OUTPUTNAME Delay_cal_M2_file3_final.dat
+ret tool cal 
+CHANNEL_LAYOUT 2 3 DEL
+ret ret clip con coff 
+chon 2 32
+discon
+ret tool cal
+CHANNEL_LAYOUT 2 6 DEL
+ret ret clip con coff 
+chon 2 32
+discon
+ret tool cal
+CHANNEL_LAYOUT 2 8 DEL
+ret ret clip con coff 
+chon 2 32
+discon
+ret tool cal
+CHANNEL_LAYOUT 2 9 DEL
+ret ret clip con coff 
+chon 2 32
+discon
+ret tool cal
+CHANNEL_LAYOUT 2 10 DEL
+ret ret clip con coff 
+chon 2 32
+discon
+ret tool cal
+CHANNEL_LAYOUT 2 15 DEL
+ret ret clip con coff 
+chon 2 32
+discon
+ret tool cal
+CHANNEL_LAYOUT 2 19 DEL
+ret ret clip con coff 
+chon 2 32
+discon
+ret tool cal
+ret

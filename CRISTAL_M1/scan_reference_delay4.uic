@@ -1,0 +1,40 @@
+!
+! Macro to test calibration 
+!
+@initialvalues_delaycheck.uic
+
+tool cal OUTPUTNAME Ref_del_scan_file4_final.dat
+ret tool cal 
+CHANNEL_LAYOUT 3 10 refdel
+ret ret clip con coff 
+chon 2 32
+discon
+ret tool cal
+CHANNEL_LAYOUT 3 1 refdel
+ret ret clip con coff 
+chon 2 32
+discon
+ret tool cal
+CHANNEL_LAYOUT 3 5 refdel
+ret ret clip con coff 
+chon 2 32
+discon
+ret tool cal
+CHANNEL_LAYOUT 3 11 refdel
+ret ret clip con coff 
+chon 2 32
+discon
+ret tool cal
+CHANNEL_LAYOUT 3 12 refdel
+ret ret clip con coff 
+chon 2 32
+discon
+ret tool cal
+CHANNEL_LAYOUT 3 14 refdel
+ret ret clip con coff 
+chon 2 32
+discon
+ret tool cal
+CHANNEL_LAYOUT 3 17 refdel
+ret 
+

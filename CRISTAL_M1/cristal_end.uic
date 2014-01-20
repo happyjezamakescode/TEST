@@ -1,0 +1,8 @@
+!
+! Finalization file for ST on MAGIC 1 
+!
+sum
+     disable
+     ret
+monstop
+rep!

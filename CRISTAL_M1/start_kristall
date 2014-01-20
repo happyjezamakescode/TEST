@@ -1,0 +1,10 @@
+#!/bin/bash
+
+
+if ! ps -C mir  > /dev/null
+then
+  echo "running Cristal..."
+ ./cristal
+else
+  echo "Cristal is already running";
+fi

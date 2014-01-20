@@ -1,0 +1,12 @@
+!
+! Macro to test calibration 
+!
+@initialvalues
+tool cal OUTPUTNAME Delay_calibration_test3_M2.dat
+CHANNEL_LAYOUT 1 1 DEL
+!ret ret clip con  cdel 30 cfix 0 discon
+!ret tool cal DEL
+ret ret clip con  cdel 0.1 cfix 0 discon
+ret tool cal DEL
+!ret ret clip con  cdel 2.0 cfix 0 discon
+!ret tool cal DEL

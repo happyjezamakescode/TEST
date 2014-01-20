@@ -1,0 +1,34 @@
+!
+! Macro to test calibration 
+!
+@initialvalues
+tool Temp 1 
+tool cal OUTPUTNAME Amplitud_calibration_M2_laser.dat
+CHANNEL_LAYOUT 1 1 THRES
+ret ret clip con ALLTEMP coff discon
+ret tool cal
+CHANNEL_LAYOUT 1 2 THRES
+ret ret clip con ALLTEMP coff discon
+ret tool cal
+CHANNEL_LAYOUT 1 3 THRES
+ret ret clip con ALLTEMP coff discon
+ret tool cal
+CHANNEL_LAYOUT 1 4 THRES
+ret ret clip con ALLTEMP coff discon
+ret tool cal
+CHANNEL_LAYOUT 1 5 THRES
+ret ret clip con ALLTEMP coff discon
+ret tool cal
+CHANNEL_LAYOUT 1 6 THRES
+ret ret clip con ALLTEMP coff discon
+ret tool cal
+CHANNEL_LAYOUT 1 7 THRES
+ret ret clip con ALLTEMP coff discon
+ret ret clip con coff discon
+ret tool cal
+CHANNEL_LAYOUT 1 8 THRES
+ret ret clip con ALLTEMP coff discon
+ret tool cal
+CHANNEL_LAYOUT 1 9 THRES
+ret ret clip con ALLTEMP coff discon
+ret tool cal

@@ -1,0 +1,206 @@
+#include "ClipLib.h" 
+#include "CristalSpi.h" 
+void clip_menu(void)
+{
+	short clip_onoff= 1;
+	short clip_board= 1;
+	short clip_channel = 3;
+	short value=255;
+    float clip_val= 0.0;//should be global?
+    float att_val= 0.0;//should be global?
+    float del_val= 0.0;//should be global?
+	char *verb;
+	char *tablepath;
+	int status;
+    int4 iverb,eDelay,rate, patchnumber, ecount ;
+
+            printf("*********");
+            printf("fd %i\n", fd);
+    
+    CPLD_conect(fd);
+
+	while(True)
+	{
+		verb = action_menu( "CLIP_BOARD_MENU", &iverb);
+		
+        if(strcmp(verb,"VERSION")==0)
+		{
+			get_short("Board",(int2*) &clip_board,1,18);
+            status = transfer(1,FUNC_CLIP_DIS ,ALL_BOARDS,ALL_C_OFF,0);
+			printf("Current version:\n");
+   		}
+    
+		if(strcmp(verb,"LEDON")==0)
+		{
+			    
+			get_short("Board",(int2*) &clip_board,1,255);
+			status = transfer(fd,0x04,clip_board,clip_channel, 0xFF);
+		}
+    
+		if(strcmp(verb,"LEDOFF")==0)
+		{
+            get_short("Board",(int2*) &clip_board,1,255);
+            status = transfer(fd,0x04,clip_board,clip_channel, 0x00);
+		}
+			    
+		if(strcmp(verb,"CTABLEPATH")==0)
+		{
+			get_text("Enter Clip-Board Table(s) path",(char *)tablepath);
+		}
+    
+		if(strcmp(verb,"SATT")==0)
+		{
+			printf("Seting all CLIP-Board attenuation\n");
+		}
+    
+		if(strcmp(verb,"ONELATT")==0)
+		{
+			printf("Loading all CLIP-Board attenuation\n");
+		}
+    
+		if(strcmp(verb,"ONEATT")==0)
+		{
+            get_short("Board",(int2*) &clip_board,1,18);
+            get_short("Channel",(int2*) &clip_channel,1,32);
+            get_real("Attenuation [V]",&clip_val,0.,31.5);
+            printf("DBG status real %i\n", status);
+            status = transfer(fd,FUNC_CLIP_ATT ,clip_board,clip_channel-1, (unsigned short)(att_val*att_conv));
+            printf("DBG status transfer %i\n", status);
+            printf("%f Clipping on channel %i on board %i\n", clip_val, clip_channel-1,clip_board);
+            printf("");
+        }
+    
+		if(strcmp(verb,"LCLIP")==0)
+		{
+			printf("Load all CLIP-Board\n");
+		}
+    
+		if(strcmp(verb,"SCLIP")==0)
+		{
+			printf("Save all CLIP-Board\n");
+		}i
+    
+		if(strcmp(verb,"ONECLIP")==0)
+		{
+            get_short("Board",(int2*) &clip_board,1,18);
+            get_short("Channel",(int2*) &clip_channel,1,32);
+            get_real("Clipping [db]",(float*) &clip_val,0.,2.5);
+            status = transfer(fd,FUNC_CLIP_CLP,clip_board,clip_channel-1,(unsigned short)clip_val*clip_conv);
+            printf("%f Clipping on channel %i on board %i\n", clip_val, clip_channel,clip_board);
+            printf("");
+		}
+    
+		if(strcmp(verb,"LDEL")==0)
+		{
+			printf("Load all CLIP-Board\n");
+		}
+    
+		if(strcmp(verb,"SDEL")==0)
+		{
+			printf("Save all CLIP-Board\n");
+		}
+    
+		if(strcmp(verb,"ONEDEL")==0)
+		{
+            get_short("Board",(int2*) &clip_board,1,18);
+            get_short("Channel",(int2*) &clip_channel,1,32);
+            get_real("Delay [V]",(float*) &clip_val,0.,30.);
+            status = transfer(fd,FUNC_CLIP_DEL ,clip_board,clip_channel-1,(unsigned short)del_val*del_conv);
+            printf("%f Delay on channel %i on board %i\n", clip_val, clip_channel,clip_board);
+            printf("");
+			printf("Set all CLIP-Board\n");
+		}
+    
+		if(strcmp(verb,"LFIXD")==0)
+		{
+			printf("Load all CLIP-Board\n");
+		}
+    
+		if(strcmp(verb,"SFIXD")==0)
+		{
+			printf("Save all CLIP-Board\n");
+		}
+    
+		if(strcmp(verb,"ONEFIXD")==0)
+		{
+            get_short("Board",(int2*) &clip_board,1,18);
+            get_short("Channel",(int2*) &clip_channel,1,32);
+            get_short("1 = on, 0 = off",(int2*) &clip_onoff,0,1);
+            status = transfer(fd,FUNC_CLIP_SWC ,clip_board,clip_channel-1,clip_onoff);
+            printf("%i  on channel %i on board %i\n", clip_onoff, clip_channel,clip_board);
+            printf("");
+		}
+    
+    
+		if(strcmp(verb,"OFF_ALL")==0)
+		{
+			printf("All channels are OFF\n");
+            status = transfer(1,FUNC_CLIP_DIS ,ALL_BOARDS,ALL_C_OFF,0);
+   		}
+    
+		if(strcmp(verb,"OFF_ONE")==0)
+		{
+            get_short("Board",(int2*) &clip_board,1,18);
+            get_short("Channel",(int2*) &clip_channel,1,32);
+            status = transfer(fd,FUNC_CLIP_DIS ,clip_board,clip_channel-1,0);
+            printf("%i  on channel %i on board %i\n", clip_onoff, clip_channel,0);
+            printf("");
+			printf("OFF\n");
+		}
+    
+		if(strcmp(verb,"OFF_NN")==0)
+		{
+			printf("Not programed yet\n");
+			printf("OFF\n");
+		}
+    
+		if(strcmp(verb,"ON_ALL")==0)
+		{
+         status = transfer(fd,FUNC_CLIP_DIS ,ALL_BOARDS,ALL_C_ON,1);
+			printf("All channels are ON \n");
+		}
+    
+		if(strcmp(verb,"ON_ONE")==0)
+		{
+            get_short("Board",(int2*) &clip_board,1,18);
+            get_short("Channel",(int2*) &clip_channel,1,32);
+            status = transfer(fd,FUNC_CLIP_DIS ,clip_board,clip_channel-1,1);
+            printf("%i  on channel %i on board %i\n", 1, clip_channel,clip_board);
+            printf("");
+			printf("ON\n");
+		}
+    
+		if(strcmp(verb,"SERIALN")==0)
+		{
+			printf("READ\n");
+		}
+		
+		if(strcmp(verb,"TEMPCPLD")==0)
+		{
+		    get_short("Board",(int2*) &clip_board,1,18);
+		    status = transfer(fd,FUNC_CHANGE_TEM ,clip_board,0,1);
+		    status = transfer(fd,FUNC_CLIP_TEM ,clip_board,0,0);
+		
+		}
+		
+		if(strcmp(verb,"TEMPAMP")==0)
+		{
+		    get_short("Board",(int2*) &clip_board,1,18);
+		    status = transfer(fd,FUNC_CHANGE_TEM ,clip_board,0,3);
+		    status = transfer(fd,FUNC_CLIP_TEM ,clip_board,0,0);
+		
+		}
+		
+		if(strcmp(verb,"ALLTEMP")==0)
+		{
+			printf("SET\n");
+		}
+		
+		if(strcmp(verb,"RETURN")==0)
+        {    
+            CPLD_disconect(fd);
+			return;
+        
+        }
+	}
+}

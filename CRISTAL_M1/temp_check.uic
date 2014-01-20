@@ -1,0 +1,15 @@
+!
+! Macro to read the Temperature of the crate
+!
+
+clip
+    alltemp
+    ret
+ast
+    atemp
+    ret
+
+!rates
+ready
+
+!lock

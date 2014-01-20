@@ -1,0 +1,170 @@
+!
+! Macro to perform one macrocell rate vs threshold 
+!
+
+! initialize all parameters
+
+! clip menu
+ret
+clip
+!    catt 8 !start calibration with attenuation 8
+    LoadLut
+
+    latt amp_ff_all_2_dec_2013_att8.uic !load flatfielded attenuations
+    labs del_ff_all_2_dec_2013_ver3.uic  !load flatfielded times
+    
+    cclip 2.5
+    cron ! all channels on
+
+    ret
+
+! atroboard menu
+ast
+    disgate
+
+! counting time ms
+    tmax 1000
+    cmax 65000
+    ret
+
+! calibration menu
+tool cal
+    outputname DEFAULT
+    ret
+ret
+
+
+!-----------------------
+! set file output name
+AST OUTPUTNAME_RATES rate_vs_thr_noise.dat
+ret
+SUM OUTPUTNAME_THR   rate_vs_thr_noise.dat
+
+//----------------
+SET_CRATE_T 0.001 SAVE_THRES  !start with 1 mV
+ret
+sum AST RESET TMWAIT ALLREAD SAVE_RATES
+ret sum 
+SET_CRATE_T 0.002 SAVE_THRES  !start with 1 mV
+ret sum
+AST RESET TMWAIT ALLREAD SAVE_RATES
+ret sum
+SET_CRATE_T 0.003 SAVE_THRES  !start with 1 mV
+ret sum
+AST RESET TMWAIT ALLREAD SAVE_RATES
+ret sum
+SET_CRATE_T 0.004 SAVE_THRES  !start with 1 mV
+ret sum
+AST RESET TMWAIT ALLREAD SAVE_RATES
+ret sum
+SET_CRATE_T 0.005 SAVE_THRES  !start with 1 mV
+ret sum
+AST RESET TMWAIT ALLREAD SAVE_RATES
+ret sum
+SET_CRATE_T 0.006 SAVE_THRES  !start with 1 mV
+ret sum
+AST RESET TMWAIT ALLREAD SAVE_RATES
+ret sum
+SET_CRATE_T 0.007 SAVE_THRES  !start with 1 mV
+ret sum
+AST RESET TMWAIT ALLREAD SAVE_RATES
+ret sum
+SET_CRATE_T 0.008 SAVE_THRES  !start with 1 mV
+ret sum
+AST RESET TMWAIT ALLREAD SAVE_RATES
+ret sum
+SET_CRATE_T 0.009 SAVE_THRES  !start with 1 mV
+ret sum
+AST RESET TMWAIT ALLREAD SAVE_RATES
+ret sum
+SET_CRATE_T 0.01 SAVE_THRES  !start with 1 mV
+ret sum
+AST RESET TMWAIT ALLREAD SAVE_RATES
+ret sum
+SET_CRATE_T 0.012 SAVE_THRES  !start with 1 mV
+ret sum
+AST RESET TMWAIT ALLREAD SAVE_RATES
+ret sum
+SET_CRATE_T 0.015 SAVE_THRES  !start with 1 mV
+ret sum
+AST RESET TMWAIT ALLREAD SAVE_RATES
+ret sum
+SET_CRATE_T 0.018 SAVE_THRES  !start with 1 mV
+ret sum
+AST RESET TMWAIT ALLREAD SAVE_RATES
+ret sum
+SET_CRATE_T 0.020 SAVE_THRES  !start with 1 mV
+ret sum
+AST RESET TMWAIT ALLREAD SAVE_RATES
+ret sum
+SET_CRATE_T 0.025 SAVE_THRES  !start with 1 mV
+ret sum
+AST RESET TMWAIT ALLREAD SAVE_RATES
+ret sum
+SET_CRATE_T 0.030 SAVE_THRES  !start with 1 mV
+ret sum
+AST RESET TMWAIT ALLREAD SAVE_RATES
+ret sum
+SET_CRATE_T 0.040 SAVE_THRES  !start with 1 mV
+ret sum
+AST RESET TMWAIT ALLREAD SAVE_RATES
+ret sum
+SET_CRATE_T 0.050 SAVE_THRES  !start with 1 mV
+ret sum
+AST RESET TMWAIT ALLREAD SAVE_RATES
+ret sum
+SET_CRATE_T 0.060 SAVE_THRES  !start with 1 mV
+ret sum
+AST RESET TMWAIT ALLREAD SAVE_RATES
+ret sum
+SET_CRATE_T 0.070 SAVE_THRES  !start with 1 mV
+ret sum
+AST RESET TMWAIT ALLREAD SAVE_RATES
+ret sum
+SET_CRATE_T 0.080 SAVE_THRES  !start with 1 mV
+ret sum
+AST RESET TMWAIT ALLREAD SAVE_RATES
+ret sum
+SET_CRATE_T 0.090 SAVE_THRES  !start with 1 mV
+ret sum
+AST RESET TMWAIT ALLREAD SAVE_RATES
+ret sum
+SET_CRATE_T 0.1 SAVE_THRES  !start with 1 mV
+ret sum
+AST RESET TMWAIT ALLREAD SAVE_RATES
+ret sum
+SET_CRATE_T 0.11 SAVE_THRES  !start with 1 mV
+ret sum
+AST RESET TMWAIT ALLREAD SAVE_RATES
+ret sum
+SET_CRATE_T 0.12 SAVE_THRES  !start with 1 mV
+ret sum
+AST RESET TMWAIT ALLREAD SAVE_RATES
+ret sum
+SET_CRATE_T 0.13 SAVE_THRES  !start with 1 mV
+ret sum
+AST RESET TMWAIT ALLREAD SAVE_RATES
+ret sum
+SET_CRATE_T 0.14 SAVE_THRES  !start with 1 mV
+ret sum
+AST RESET TMWAIT ALLREAD SAVE_RATES
+ret sum
+SET_CRATE_T 0.15 SAVE_THRES  !start with 1 mV
+ret sum
+AST RESET TMWAIT ALLREAD SAVE_RATES
+ret sum
+SET_CRATE_T 0.16 SAVE_THRES  !start with 1 mV
+ret sum
+AST RESET TMWAIT ALLREAD SAVE_RATES
+ret sum
+SET_CRATE_T 0.18 SAVE_THRES  !start with 1 mV
+ret sum
+AST RESET TMWAIT ALLREAD SAVE_RATES
+ret sum
+SET_CRATE_T 0.20 SAVE_THRES  !start with 1 mV
+ret sum
+AST RESET TMWAIT ALLREAD SAVE_RATES
+ret
+
+
+

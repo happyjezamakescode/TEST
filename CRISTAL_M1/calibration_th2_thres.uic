@@ -1,0 +1,35 @@
+!
+! Macro to test calibration 
+!
+@initialvalues_Att_FF
+tool Temp 1 
+tool cal OUTPUTNAME Amplitude_cal_M2_file2_Thomas2.dat
+CHANNEL_LAYOUT 1 10 THRES
+ret ret clip con ALLTEMP coff discon
+ret tool cal
+CHANNEL_LAYOUT 1 11 THRES
+ret ret clip con ALLTEMP coff discon
+ret tool cal
+CHANNEL_LAYOUT 1 12 THRES
+ret ret clip con ALLTEMP coff discon
+ret tool cal
+CHANNEL_LAYOUT 1 13 THRES
+ret ret clip con ALLTEMP coff discon
+ret tool cal
+CHANNEL_LAYOUT 1 14 THRES
+ret ret clip con ALLTEMP coff discon
+ret tool cal
+CHANNEL_LAYOUT 1 15 THRES
+ret ret clip con ALLTEMP coff discon
+ret tool cal
+CHANNEL_LAYOUT 1 16 THRES
+ret ret clip con ALLTEMP coff discon
+ret tool cal
+CHANNEL_LAYOUT 1 17 THRES
+ret ret clip con ALLTEMP coff discon
+ret tool cal
+CHANNEL_LAYOUT 1 18 THRES
+ret ret clip con ALLTEMP coff discon
+ret tool cal
+ret
+

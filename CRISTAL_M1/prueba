@@ -1,0 +1,50 @@
+            for (k=0;k<22;k++)
+            {
+                    for (j=0;j<55;j++)
+                    {
+                            fdvalue[j]=gstep*kchange[j]+k*fstep;
+
+                            fdelay[k][j]=fdvalue[j];
+	      	    DelaytoBias(fdvalue[j], &fixeddelay, &biasvalue,&attenuationvalue);
+		   data_delay=(int)(biasvalue *del_conv);
+		    transfer(FUNC_CLIP_DEL ,CalSet.board[j],CalSet.Lchannel[j],data_delay);//set variable
+		    transfer(FUNC_CLIP_SWC ,CalSet.board[j],CalSet.Lchannel[j],fixeddelay);//set variable
+		    transfer(FUNC_CLIP_ATT ,CalSet.board[j],CalSet.Lchannel[j],attenuationvalue);//set variable
+		}
+                    }
+		    transfer(FUNC_ASTRO_RES,0,0,0); //start counting  
+                    usleep(1000*ASData.Tmax);
+                    changeflag2=0;
+                    
+                    for (j=1;j<56;j++)
+                    {
+                        Macrocell=j;
+                        transfer_c(FUNC_ASTRO_AMP,&data1,&data2,&Macrocell);   
+                        frate[k][j-1]=Macrocell;
+                        if(frate[k][j-1]<1) kchange2[j-1]=1;
+                    }   
+                    
+                   Tfile= fopen ((char *)CalSet.outputname, "a" );     
+                   fprintf(Tfile,"#Macrocel    #Threshold    #Rate[Hz]\n");
+                    for (j=1;j<56;j++)
+                    {
+                        printf("%f [V] Threshold   ", fdvalue[j-1]);
+                        printf("Macrocel %i, rate %i [Hz]\n", j,frate[k][j-1]);
+			fprintf(Tfile,"%i    ", j);    
+			fprintf(Tfile,"%f    ", fdvalue[j-1]);    
+                        fprintf(Tfile,"%i    \n", frate[k][j-1]);
+                    }
+                    fprintf(Tfile,"\n");
+                    fclose ( Tfile );
+                    
+
+               // }	
+            }
+                   Tfile= fopen ((char *)CalSet.outputname, "a" );     
+                      
+                        fprintf(Tfile,"#Macrocel     #Threshold \n");
+                    for (j=1;j<56;j++)
+                    {
+                        fprintf(Tfile,"%i    %f \n", j,gstep*kchange[j-1]+0.2+kchange2[j-1]*fstep);
+		    }
+                    fprintf(Tfile,"\n");
